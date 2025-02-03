@@ -9,10 +9,15 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
 
 // import routes
 import userRouter from "./routes/user.routes.js";
+import { errorHandler } from "./middlewares/error.middleware.js";
 
 app.use("/api/users", userRouter);
+
+// Error Handler Middleware must be the last middleware
+app.use(errorHandler);
 
 export default app;
