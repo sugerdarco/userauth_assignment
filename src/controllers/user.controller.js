@@ -121,14 +121,14 @@ const forgotPassword = asyncHandler( async (req, res) => {
   const resetLink = `${req.protocol}://${req.get('host')}${req.originalUrl}/${resetToken}`
 
   let transporter = await nodemailer.createTransport({
-    host: 'sandbox.smtp.mailtrap.io',
-    port: 587,
+    host: 'mxslurp.click',
+    port: 2525,
     secure: false,
     auth: {
       user: process.env.EMAIL_USERNAME,
       pass: process.env.EMAIL_PASS,
     }
-  })
+  });
 
   await transporter.sendMail({
     from: process.env.EMAIL,
